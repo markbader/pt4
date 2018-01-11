@@ -3,7 +3,7 @@
 
 int main (){
 	int input;
-	int state = 0; //0 - whitespace, 1 - word
+	int state = 0; /* 0 - whitespace, 1 - word */
 	int line = 1;
 	int character = 0;
 	int word = 0;
@@ -12,18 +12,19 @@ int main (){
 			case 32:/*@fallthrough@*/
 			case 9:	if (state == 1){
 					word++;
+					state = 0;
 				}
 				character++;
-				state = 0;
 				break;
 			case 10:if (state == 1) {
-					word++; 
+					word++;
+					state = 0;
 				}
 				line ++;
-				state = 0;
 				break;
 			default:state = 1;
-				character++;break;
+				character++;
+				break;
 		}
 	}
 	if (state == 1) {
