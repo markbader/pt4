@@ -2,17 +2,28 @@
 #include <stdio.h>
 
 int main (){
-	char input;
+	int input;
 	int state = 0; //0 - whitespace, 1 - word
 	int line = 1;
 	int character = 0;
 	int word = 0;
 	while((input = getchar()) != EOF){
 		switch (input) {
-			case ' ':/*@fallthrough@*/
-			case '\t': character++;/*@fallthrough@*/
-			case '\n': line ++; (state == 0) ? state=0 : word++; break;
-			default: state = 1; character++;break;
+			case 32:/*@fallthrough@*/
+			case 9:	if (state == 1){
+					word++;
+				}
+				character++;
+				state = 0;
+				break;
+			case 10:if (state == 1) {
+					word++; 
+				}
+				line ++;
+				state = 0;
+				break;
+			default:state = 1;
+				character++;break;
 		}
 	}
 	if (state == 1) {
