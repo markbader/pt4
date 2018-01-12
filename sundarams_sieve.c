@@ -23,6 +23,9 @@ int main(int argc, char * argv[]){
 	}
 	int i;
 	int n = (atoi(argv[1])%2 == 0) ? (atoi(argv[1])/2)-1 : atoi(argv[1])/2;
+	if (atoi(argv[1])>=2){
+		printf("2\n");
+	}
 	int numbers[n];
 	for (i=1; i<=n; i++){
 		numbers[i-1]=i;
