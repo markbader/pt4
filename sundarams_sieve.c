@@ -11,7 +11,7 @@ void sieve(int numbers[], int n){
 		}
 	}
 	for (i=0; i<n; i++){
-		if (numbers[i] && numbers[i]*2+1<=n){
+		if (numbers[i]){
 			printf("%d\n", numbers[i]*2+1);
 		}
 	}
@@ -22,10 +22,11 @@ int main(int argc, char * argv[]){
 		return 1;
 	}
 	int i;
-	int n = atoi(argv[1]);
+	int n = (atoi(argv[1])%2 == 0) ? (atoi(argv[1])/2)-1 : atoi(argv[1])/2;
 	int numbers[n];
 	for (i=1; i<=n; i++){
 		numbers[i-1]=i;
 	}
 	sieve(numbers, n);
+	return 0;
 }
